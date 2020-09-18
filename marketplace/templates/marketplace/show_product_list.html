@@ -1,0 +1,26 @@
+{% extends 'marketplace/base.html' %}
+{% load i18n humanize static auth_tokens webdesign %}
+
+{% block page_title %}
+<title>ikwen Marketplace</title>
+{% endblock %}
+
+{% block content %}
+    <div id="top-notice-ctnr" style="display: none">
+        <span class="floating-notice has-shade" style="float: none; position: static"> Error goes here </span>
+    </div>
+    <div id="content">
+        <div class="banner">
+            <form id="edit-search" class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+                <input id="city" type="text" class="form-control" name="city" placeholder="{% trans "Search marketplace" %}">
+            </form>
+            <div class="clearfix"></div>
+        </div>
+        <div class="container-fluid">
+            <h2 class="main-title" style="">{% trans "Market Place" %}</h2>
+            <div id="results" class="results-stage" style="margin-top: 4vh">
+                {% include 'marketplace/snippets/product_list_results.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

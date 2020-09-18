@@ -1,0 +1,21 @@
+{% extends "core/base_admin.html" %}
+{% load i18n static auth_tokens %}
+{% block app_admin_nav %}
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="dashboard">
+            <a href="{% url 'admin_home' %}">{% trans "Dashboard" %}</a>
+        </li>
+    </ul>
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="products">
+            {% url 'marketplace:product_list' as product_list_url %}
+            <a href="{{ product_list_url }}">{% trans "Products" %}</a>
+        </li>
+    </ul>
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="subscriptions">
+            {% url 'billing:subscription_list' as subscription_list_url %}
+            <a href="{{ subscription_list_url }}">{% trans "Subscriptions" %}</a>
+        </li>
+    </ul>
+{% endblock %}

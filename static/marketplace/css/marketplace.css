@@ -1,0 +1,148 @@
+/**
+	Document   : marketplace.css
+	Created on : April 16, 2020, 13:58
+	Author     : Kom Sihon
+	Description:
+		Additional rules for marketplace website
+*/
+body {background: #f8f6f6;}
+#content .container-fluid {padding: 15px 60px}
+#content h2, h3, h4 {color: #201a3a}
+.main-title {font-weight: 900; font-size: 42px; margin: 25px 0 25px}
+
+#nav-xs .show-search, #navbar-search {display: none}
+.navbar-brand.visible-xs {font-size: 16px;margin-top: 3px;}
+.breadcrumb {background: none}
+
+.banner {height: 320px;background: #0d47a1;}
+.banner form {margin-top: 240px}
+
+.footer {background: #f6f6f6; padding-top: 30px}
+.footer h3 {font-weight: 600}
+.footer ul {padding: 0}
+.footer ul li {display: block;padding: 15px 0 0;}
+.footer ul li i {font-size: 27px;margin-right: 6px;display: block;float: left;}
+.footer ul li a {color: inherit;text-decoration: none;}
+.footer .contacts ul li a {display: block;float: left;margin-top: 3px;}
+.footer .share ul li {display: block;float: left;margin-right: 15px;}
+.lang-switcher select {background: none; width: 45px;}
+footer {background: #f6f6f6; margin: 0; padding: 30px}
+
+.images-uploader .frame {height: 22vh;float: left;margin: 0 10px 15px 0;overflow: hidden;width: 42vw;}
+.images-uploader .image {background: no-repeat center;background-size: cover;border: solid 1px #DBE6FF;margin-right: 10px}
+.images-uploader .image .delete {background: #FFF; border-bottom-left-radius: 10px; color: #ef0202; cursor: pointer; font-size: 15px; font-weight: bold; float: right; padding: 2px  9px}
+.images-uploader .image.loading .delete {display: none}
+.images-uploader .image .progress {background: #3C63FF; height: 100%}
+.images-uploader .uploader {background: url(../img/no_photo.png) center no-repeat; background-size: cover;
+    border: solid 1px #eee; font: bold 48px Arial; text-align: center}
+.images-uploader .qq-upload-button {background: none;border: none;box-shadow: none;color: #9e9e9e;text-shadow: none;line-height: 136px;width: 100%;}
+.images-uploader .qq-upload-button-hover {box-shadow: none; color: #fff}
+.min-required-photos, .enough-photos {display: none; margin-bottom: 20px; padding: 10px}
+
+#pagination, #page-navigation {clear: both}
+
+.product-list {}
+.product {
+    background: #fff;
+    display: block;
+    margin-bottom: 24px;
+    padding: 20px 25px;
+    height: 320px;
+    overflow: hidden;
+}
+.product:hover {text-decoration: none;}
+.product .image {background: no-repeat center;background-size: cover;border-radius: 6px;height: 80px;display: block;overflow: hidden;width: 80px;}
+.product .name {height: 75px;display: block;font-size: 27px;margin-top: 20px;overflow: hidden;color: #0d47a1;}
+.product .key-points {clear: both;color: #103369;font-size: 14px;height: 45px;margin: 11px 0;}
+.product .about {color: #445b75;clear: both;height: 42px;font-size: 14px;margin-top: 10px;overflow: hidden;}
+
+.product-details {margin-top: 5px;margin-bottom: 5vh;}
+.product-details .img {
+    background: no-repeat center;
+    background-size: cover;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    float: left;
+    margin-right: 15px;
+    padding: 5px;
+    width: 72px;
+}
+.product-details .title {width: calc(100% - 90px);float: left;margin-top: -2px;}
+.product-details .title h2 {font-size: 36px; margin-top: -2px;}
+.product-details .subscribe button {float: left; min-width: 200px;}
+.product-details .actions {float: left;margin-top: 10px;margin-left: 5px;}
+.product-details .actions i {color: #aaa; font-size: 24px}
+.product-details .header {border-bottom: 1px solid #ddd;padding-bottom: 90px;}
+.product-details .key-points {color: #103369;font-size: 14px}
+.product-details .key-points span, .product-details .key-points strong {float: left; margin-right: 10px}
+.product-details .key-points > span {margin-right: 15px;}
+.product-details .cost {clear: both;font-size: 25px;font-weight: 700;margin-bottom: 15px;}
+.product-details .cost .currency {color: #888;font-weight: 300;font-size: 14px;}
+.product-details .about {padding-top: 40px}
+.product-details .about h3, .product-details .about h4 {font-weight: 900}
+.product-details .description {}
+
+.payment-confirmation {border: 3px solid #2cb100;background: #fff;margin-bottom: 30px;padding-bottom: 15px;}
+
+@media (max-width: 991px) {
+    .images-uploader .frame:nth-child(3n+1) {margin-right: 0}
+}
+
+@media (max-width: 767px) {
+    #content .container-fluid {padding: 0px 10px 0;}
+    .product-details .subscribe {margin-top: 20px;}
+    .product-details .subscribe button {width: calc(100% - 40px)}
+    .product-details .header {padding-bottom: 30px}
+    .product-details .title h2 {font-size: 24px}
+    .product-details .about {padding-top: 0}
+    .product-details .cost {padding-top: 0}
+    .payment-confirmation h2 {font-size: 21px}
+    .payment-confirmation h2.payment-id {font-size: 16px; font-weight: 700}
+    .payment-confirmation img {margin: auto}
+    #navbar .glyphicon, .navbar-default .navbar-brand {color: #888}
+    .icon-bar {background: #888}
+    .edge-panel-left .footer {bottom: 15px; padding: 0 15px; position: fixed}
+    .edge-panel-left .lang-switcher {padding: 15px;}
+    .edge-panel-left .lang-switcher .fa {font-size: 22px}
+}
+
+@media (min-width: 768px) {
+    #navbar {background: #fff; border-bottom: 1px solid #ddd}
+    #content {padding-top: 65px;min-height: 450px;}
+    .navbar-header > .container-fluid {padding-left: 0}
+    .menu-button {padding: 23px 20px 0 0;}
+    .icon-bar {background: #888;}
+    .navbar-default .navbar-nav>li>a, #navbar .glyphicon {color: #888;}
+    .navbar-default .navbar-brand {color: #888;font-size: 30px;padding-top: 15px;}
+    .navbar-default .navbar-brand.img {padding: 5px 0}
+    #navbar-search input {
+        background: #f6f6f6;
+        color: #545454;
+    }
+    .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {color: #666}
+    .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {background: #eee}
+
+    .images-uploader .frame {height: 240px;width: 220px;}
+    .images-uploader .qq-upload-button {line-height: 240px}
+
+    .payment-confirmation img {margin-top: 25px;}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .product .image {height: 14vh;}
+}
+
+@media (min-width: 992px) {
+    #theater-view .photo {width: 40vw}
+}
+
+@media (min-width: 1200px) {
+    .product {height: 320px;}
+    .product-details .img-circle {height: 200px; max-width: 200px; width: 200px}
+}
+
+@media print {
+    /*html, body {width: 7cm}*/
+    #app-nav, .bottom, footer, .footer, .subscribe, .payment-confirmation img {display: none !important;}
+    .text-muted {color: #888}
+}

@@ -1,0 +1,57 @@
+{% load i18n static humanize %}
+{% include 'core/snippets/spinner.html' %}
+<div class="profile-list row">
+    {% for obj in objects_page.object_list %}
+    {% url 'marketplace:product_detail' obj.slug as obj_url %}
+    <div class="col-sm-4 col-lg-3" id="{{ obj.id }}" data-id="{{ obj.id }}">
+        <a href="{{ obj_url }}" class="product {{ obj.status }} subtle-shade">
+            <div>
+                <div>
+                    <span class="image"
+                       style="background-image: url({% get_media_prefix %}{{ obj.image.small_name }})"></span>
+                </div>
+                <strong class="name">{{ obj.name }}</strong>
+                <div class="clearfix"></div>
+            </div>
+            <div class="key-points">
+                <div>
+                    <strong>{% trans "App" %} :</strong>
+                    <span>{{ obj.app.name }}</span>
+                </div>
+                <div>
+                    <strong>{% trans "Duration" %} :</strong>
+                    <span>{{ obj.duration_text }}</span>
+                </div>
+            </div>
+            <p class="about">
+                {{ obj.short_description }}
+            </p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% if objects_page.paginator.num_pages > 1 %}
+<ul class="pagination col-xs-12 col-sm-9">
+    {% if objects_page.paginator.num_pages > max_visible_page_count and page_range.0 >= max_visible_page_count  %}
+        <li class="page" data-val="first"><a href="javascript:;" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+    {% endif %}
+    {% for page in page_range %}
+        <li class="page{% if page == objects_page.number %} active{% endif %}" data-val="{{ page }}">
+            <a href="javascript:;">
+                {{ page }} {% if page == objects_page.number %}<span class="sr-only">(current)</span>{% endif %}
+            </a>
+        </li>
+    {% endfor %}
+    {% if objects_page.paginator.num_pages > max_visible_page_count and max_page < objects_page.paginator.num_pages %}
+        <li class="page{% if max_page == objects_page.paginator.num_pages %} disabled{% endif %}" data-val="-1"><a href="javascript:;" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+    {% endif %}
+</ul>
+{% endif %}
+<div id="page-navigation" class="col-xs-12 col-sm-3" style="color: #3066b1">
+    {% if objects_page.paginator.num_pages > 1 %}
+        <p>{% blocktrans with count=objects_page.paginator.count start=objects_page.start_index end=objects_page.end_index %}
+            {{ start }} – {{ end }} of {{ count }} results{% endblocktrans %}</p>
+    {% else %}
+        <p>{% blocktrans with count=objects_page.paginator.count %}{{ count }} results{% endblocktrans %}</p>
+    {% endif %}
+</div>

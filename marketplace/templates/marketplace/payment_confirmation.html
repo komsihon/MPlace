@@ -1,0 +1,177 @@
+{% extends 'marketplace/base.html' %}
+{% load i18n humanize static %}
+
+{% block page_title %}
+<title>{{ product.name }} - ikwen Marketplace</title>
+{% endblock %}
+
+{% block content %}
+    <div id="top-notice-ctnr" style="display: none">
+        <span class="floating-notice has-shade" style="float: none; position: static"> Error goes here </span>
+    </div>
+    <div id="content" class="product-details">
+        <div id="app-nav" class="container-fluid">
+            <ol class="breadcrumb">
+                <li><a href="{% url 'home' %}">{{ service.project_name }}</a></li>
+                <li>
+                    <a href="javascript:;">{{ product.app.name }}</a>
+                </li>
+            </ol>
+        </div>
+        <div class="container-fluid">
+            <div class="row header">
+                <div class="col-sm-8">
+                    <div class="img col-xs-12">
+                        <img src="{% get_media_prefix %}{{ product.image.small_name }}" width="60">
+                    </div>
+                    <div class="title">
+                        <h2>{{ product.name }}</h2>
+                        <p class="text-muted">{% blocktrans %}by {{ product.provider.project_name }}{% endblocktrans %}</p>
+                        <p class="key-points">
+                            <span>
+                                <strong>{% trans "App" %}</strong>
+                                <span>{{ product.app.name }}</span>
+                            </span>
+                            <span>
+                                <strong>{% trans "Duration" %}</strong>
+                                <span>{{ product.app.name }}</span>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-sm-4 subscribe">
+                    <button class="btn btn-deep-blue btn-md {% if user.is_authenticated %}payment-start{% else %}prompt-login{% endif %}"
+                            data-product-id="{{ product.id }}">{% trans "Subscribe now" %}</button>
+                    <div class="actions menu">
+                        <div class="dropdown" style="cursor: pointer; float: right">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <i class="fa fa-share-alt text-muted"></i>
+                            </span>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="period">
+                                <li>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ company.url }}?referrer={{ user.id }}"
+                                       target="_blank" style="color: #3b5998;">
+                                        <i class="fab fa-facebook"></i>
+                                        Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/intent/tweet?url={{ company.url }}%3Freferrer={{ user.id }}"
+                                       target="_blank" style="color: #1da1f2;">
+                                        <i class="fab fa-twitter"></i>
+                                        Twitter
+                                    </a>
+                                </li>
+                                <li class="visible-xs">
+                                    <a class="whatsapp-share-company" href="javascript:;" style="color: #2cb100"
+                                       data-toggle="modal" data-target="#whatsapp-share"
+                                       data-url="{{ company.url }}?referrer={{ user.id }}">
+                                        <div class="hidden text">
+                                        {% if company.is_standalone %}
+                                            {% blocktrans %}Hello, I find this interesting for you. You can order online and get delivered where you want.{% endblocktrans %}
+                                        {% else %}
+                                            {% blocktrans with project_name=company.project_name %}Do you know {{ project_name }} on ikwen ? I found it interesting for you. You should check it out.{% endblocktrans %}
+                                        {% endif %}
+                                        </div>
+                                        <i class="fab fa-whatsapp"></i>
+                                        WhatsApp
+                                    </a>
+                                </li>
+                                <li class="hidden-xs">
+                                    <a href="javascript:;" class="text-muted"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row about">
+                <div class="col-sm-8 col-md-7">
+                    <h3>{% trans "Description" %}</h3>
+                    <div class="description">
+                        {{ product.description|safe }}
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-offset-1 details">
+                    <h4>{% trans "Support Details" %}</h4>
+                    <div class="">
+                        <p class="text-muted">{% trans "Provided by" %}: {{ product.provider.project_name }}</p>
+                        <p>
+                            <span class="text-muted">{% trans "Phone" %}:</span>
+                            <a href="tel://{{ product.phone }}">{{ product.phone }}</a>
+                        </p>
+                        <p>
+                            <span class="text-muted">{% trans "Email" %}:</span>
+                            <a href="mailto:{{ product.email }}">{{ product.email }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 45px">
+                <div class="col-sm-4 subscribe">
+                    <button class="btn btn-deep-blue btn-md {% if user.is_authenticated %}payment-start{% else %}prompt-login{% endif %}"
+                            data-product-id="{{ product.id }}">{% trans "Subscribe now" %}</button>
+                    <div class="actions menu">
+                        <div class="dropdown" style="cursor: pointer; float: right">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <i class="fa fa-share-alt text-muted"></i>
+                            </span>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="period">
+                                <li>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ company.url }}?referrer={{ user.id }}"
+                                       target="_blank" style="color: #3b5998;">
+                                        <i class="fab fa-facebook"></i>
+                                        Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/intent/tweet?url={{ company.url }}%3Freferrer={{ user.id }}"
+                                       target="_blank" style="color: #1da1f2;">
+                                        <i class="fab fa-twitter"></i>
+                                        Twitter
+                                    </a>
+                                </li>
+                                <li class="visible-xs">
+                                    <a class="whatsapp-share-company" href="javascript:;" style="color: #2cb100"
+                                       data-toggle="modal" data-target="#whatsapp-share"
+                                       data-url="{{ company.url }}?referrer={{ user.id }}">
+                                        <div class="hidden text">
+                                        {% if company.is_standalone %}
+                                            {% blocktrans %}Hello, I find this interesting for you. You can order online and get delivered where you want.{% endblocktrans %}
+                                        {% else %}
+                                            {% blocktrans with project_name=company.project_name %}Do you know {{ project_name }} on ikwen ? I found it interesting for you. You should check it out.{% endblocktrans %}
+                                        {% endif %}
+                                        </div>
+                                        <i class="fab fa-whatsapp"></i>
+                                        WhatsApp
+                                    </a>
+                                </li>
+                                <li class="hidden-xs">
+                                    <a href="javascript:;" class="text-muted"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'billing/snippets/modal_payment_options.html' %}
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script>
+        (() => {
+           $('.prompt-login').click(() => {
+               let image = 'https://static.ikwen.com/ikwen/img/please-login.png',
+                   title = "{% trans "Login required" %}",
+                   message = "{% trans "Please, you need to login to proceed so that we know who is paying." %}",
+                   url = "{% url 'ikwen:sign_in' %}?next={% url 'marketplace:product_detail' product.slug %}";
+               ikwen.showNoticeDialog(image, title, message, url)
+           });
+        })()
+    </script>
+{% endblock %}
